@@ -1,0 +1,15 @@
+diff --git extlink_extra.js extlink_extra.js
+index c5dd81c..c8acb24 100644
+--- extlink_extra.js
++++ extlink_extra.js
+@@ -86,8 +86,8 @@ Drupal.behaviors.extlink_extra = {
+       try {
+         var url = this.href.toLowerCase();
+         if (url.indexOf('http') == 0
+-          && (!url.match(internal_link) && !(extExclude && url.match(extExclude)))
+-          || (extInclude && url.match(extInclude))
++          && ((!url.match(internal_link) && !(extExclude && url.match(extExclude))) || (extInclude && url.match(extInclude)))
++          && !(extCssExclude && $(this).is(extCssExclude))
+           && !(extCssExclude && $(this).parents(extCssExclude).length > 0)
+           && !(extCssExplicit && $(this).parents(extCssExplicit).length < 1)) {
+ 
